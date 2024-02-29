@@ -8,6 +8,7 @@ use App\Http\Controllers\backend\RoomController;
 use App\Http\Controllers\backend\TeamController;
 use App\Http\Controllers\backend\RoomListController;
 use App\Http\Controllers\backend\RoomTypeController;
+use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\frontend\BookingController;
 use App\Http\Controllers\frontend\AllRoomsController;
 
@@ -101,6 +102,16 @@ Route::controller(RoomController::class)->group(function(){
     Route::get('delete/room/{id}', 'DeleteRoom')->name('delete.room');
 
 
+});
+
+
+//// SMTP Setting All Routes
+Route::controller(SettingController::class)->group(function(){
+
+    Route::get('smtp/setting', 'SmtpSetting')->name('smtp.setting');
+    Route::post('update/smtp', 'UpdateSmtp')->name('update.smtp');
+   
+   
 });
 
 
