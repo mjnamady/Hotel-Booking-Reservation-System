@@ -52,6 +52,7 @@ class BookingController extends Controller
             ); 
             return redirect()->back()->with($notification); 
         }
+
         Session::forget('book_date');
 
         $data = array();
@@ -190,7 +191,6 @@ class BookingController extends Controller
         $booking->save();
 
         // Start mail sending
-
         $sendMial = Booking::find($id);
 
         $data = [
