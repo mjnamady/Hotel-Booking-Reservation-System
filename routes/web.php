@@ -9,6 +9,7 @@ use App\Http\Controllers\backend\TeamController;
 use App\Http\Controllers\backend\RoomListController;
 use App\Http\Controllers\backend\RoomTypeController;
 use App\Http\Controllers\backend\SettingController;
+use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\frontend\BookingController;
 use App\Http\Controllers\frontend\AllRoomsController;
 
@@ -112,6 +113,18 @@ Route::controller(SettingController::class)->group(function(){
     Route::post('update/smtp', 'UpdateSmtp')->name('update.smtp');
    
    
+});
+
+
+//// Testimonial  All Routes
+Route::controller(TestimonialController::class)->group(function(){
+    Route::get('all/testimonial', 'AllTestimonial')->name('all.testimonial');
+    Route::get('add/testimonial', 'AddTestimonial')->name('add.testimonial');
+    Route::post('store/testimonial', 'StoreTestimonial')->name('store.testimonial');
+    Route::get('edit/testimonial/{id}', 'EditTestimonial')->name('edit.testimonial');
+    Route::post('update/testimonial', 'UpdateTestimonial')->name('update.testimonial');
+    Route::get('delete/testimonial/{id}', 'DeleteTestimonial')->name('delete.testimonial');
+    
 });
 
 
