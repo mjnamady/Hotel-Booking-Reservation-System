@@ -131,8 +131,9 @@ Route::controller(TestimonialController::class)->group(function(){
 
 //// Blog Category  All Routes
 Route::controller(BlogController::class)->group(function(){
-    Route::get('all/category', 'BlogCategory')->name('blog.category');
+    Route::get('all/category', 'BlogCategory')->name('blog.category'); 
     Route::post('store/category', 'StoreCategory')->name('store.category');
+    Route::get('/edit/blog/category/{id}', 'EditBlogCategory');
    
 });
 
