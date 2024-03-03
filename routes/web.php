@@ -4,14 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\backend\RoomController;
 use App\Http\Controllers\backend\TeamController;
+use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\RoomListController;
 use App\Http\Controllers\backend\RoomTypeController;
-use App\Http\Controllers\backend\SettingController;
-use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\frontend\BookingController;
 use App\Http\Controllers\frontend\AllRoomsController;
+use App\Http\Controllers\Backend\TestimonialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -125,6 +126,14 @@ Route::controller(TestimonialController::class)->group(function(){
     Route::post('update/testimonial', 'UpdateTestimonial')->name('update.testimonial');
     Route::get('delete/testimonial/{id}', 'DeleteTestimonial')->name('delete.testimonial');
     
+});
+
+
+//// Blog Category  All Routes
+Route::controller(BlogController::class)->group(function(){
+    Route::get('all/category', 'BlogCategory')->name('blog.category');
+    Route::post('store/category', 'StoreCategory')->name('store.category');
+   
 });
 
 
