@@ -15,4 +15,9 @@ class BlogPost extends Model
     {
         return $this->belongsTo(BlogCategory::class, 'blogcat_id', 'id')->withDefault(['category_name'=>'No Category!']);
     }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

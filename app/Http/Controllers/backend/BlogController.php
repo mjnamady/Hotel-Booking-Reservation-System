@@ -172,4 +172,35 @@ class BlogController extends Controller
         }
     }  // End Method
 
+    public function DeleteBlogPost($id)
+    {
+        $blog = BlogPost::findOrfail($id);
+        unlink($blog->post_image);
+        $blog->delete();
+
+        $notification = array(
+            'message' => 'BlogPost Deleted Successfully!',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+    } // End method
+
+    public function BlogPostDetail($post_slug)
+    {
+        $post = BlogPost::where('post_slug', $post_slug)->first();
+        $bcategories = BlogCategory::latest()->get();
+        $lposts = BlogPost::latest()->limit(3)->get();
+        return view('frontend.blog.blog_post_detail',compact('post','bcategories','lposts'));
+    } // End method
+
+    public function CategoryWiseBlog($cat_id)
+    {
+        $blogs = BlogPost::where('blogcat_id',$cat_id)->paginate(2);
+        $bcategories = BlogCategory::latest()->get();
+        $lposts = BlogPost::latest()->limit(3)->get();
+        $scat = BlogCategory::findOrFail($cat_id);
+        return view('frontend.blog.category_wise_blogs',compact('blogs','bcategories','lposts','scat')); 
+    } // End method
+
 }

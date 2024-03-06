@@ -136,13 +136,8 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('/edit/blog/category/{id}', 'EditBlogCategory');
     Route::post('update/blog/category', 'UpdateCategory')->name('update.blog.category');
     Route::get('delete/blog/category/{id}', 'DeleteCategory')->name('delete.blog.category');
-
-
-    ////////// All Blogs routes /////////////
-    Route::get('all/blog/post', 'AllBlogPost')->name('all.blog.post'); 
    
 });
-
 
 //// Blog Post  All Routes
 Route::controller(BlogController::class)->group(function(){
@@ -152,6 +147,7 @@ Route::controller(BlogController::class)->group(function(){
     Route::post('store/blog/post', 'StoreBlogPost')->name('store.blog.post'); 
     Route::get('edit/blog/post/{id}', 'EditBlogPost')->name('edit.blog.post'); 
     Route::post('update/blog/post', 'UpdateBlogPost')->name('update.blog.post'); 
+    Route::get('delete/blog/post/{id}', 'DeleteBlogPost')->name('delete.blog.post');
    
 });
 
@@ -167,9 +163,15 @@ Route::controller(AllRoomsController::class)->group(function(){
     Route::get('/search/room/details/{id}', 'SearchRoomDetails')->name('search_room_details');
 
     Route::get('/check_room_availability/', 'CheckRoomAvailability')->name('check_room_availability');
+
+});
+
+
+//// Blog Post  All Routes
+Route::controller(BlogController::class)->group(function(){
+    Route::get('blog/post/detail/{post_slug}', 'BlogPostDetail');
+    Route::get('category/wise/blog/{cat_id}', 'CategoryWiseBlog');
    
-
-
 });
 
 // Auth Middleware User must have login for access this route 

@@ -42,7 +42,7 @@
                             <td> <img src="{{ asset($post->post_image) }}" alt="" style="width:60px;height:40px;"> </td>
                             <td>
                                 <a href="{{ route('edit.blog.post', $post->id) }}" type="button" class="btn btn-outline-warning radius-30">Edit</a>
-                                <a href="{{ route('delete.team', $post->id) }}" id="delete" type="button" class="btn btn-outline-danger radius-30">Delete</a>
+                                <a href="{{ route('delete.blog.post', $post->id) }}" id="delete" type="button" class="btn btn-outline-danger radius-30">Delete</a>
                             </td>
                         </tr>
                         @endforeach
