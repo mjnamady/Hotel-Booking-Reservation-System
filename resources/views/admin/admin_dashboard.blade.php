@@ -37,6 +37,15 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 {{-- End Sweet Alert Link  --}}
+
+<script src="{{ asset('tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
+
+
 	<title>Hotel Reservation</title>
 </head>
 
@@ -263,15 +272,14 @@
 		  } );
 	</script>
 
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+{{-- <script src="https://cdn.tiny.cloud/1/gv2zo97ly2uy67rf6f1t03urwp90o0ii1t4f3ygg2j8mirvn/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
    tinymce.init({
      selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
      plugins: 'powerpaste advcode table lists checklist',
      toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
    });
-</script>
-
+</script> --}}
 
 
 <script src="{{ asset('backend/assets/js/code.js') }}"></script>

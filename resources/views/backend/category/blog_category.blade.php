@@ -41,9 +41,8 @@
                             <td>{{ $item->category_name }}</td>
                             <td>{{ $item->category_slug }}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-warning radius-30" data-bs-toggle="modal" data-bs-target="#category" id="{{$item->id}}" onclick="categoryEdit(this.id)">Edit </button>
-                                
-                                <a href="{{ route('delete.team', $item->id) }}" id="delete" type="button" class="btn btn-outline-danger radius-30">Delete</a>
+                                <button type="button" class="btn btn-outline-warning radius-30" data-bs-toggle="modal" data-bs-target="#category" id="{{$item->id}}" onclick="categoryEdit(this.id)">Edit</button>
+                                <a href="{{ route('delete.blog.category', $item->id) }}" id="delete" type="button" class="btn btn-outline-danger radius-30">Delete</a>
                             </td>
                         </tr>
                         @endforeach
@@ -66,13 +65,13 @@
                 <h5 class="modal-title" id="exampleModalLabel">Add Blog Category</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="{{route('store.category')}}">
+            <form method="POST" action="{{route('store.blog.category')}}">
                 @csrf
             <div class="modal-body">
                 
                     <div class="form-group mb-3">
                         <label for="" class="form-label">Category Name</label>
-                        <input type="text" name="category_name" class="form-control" id="cat">
+                        <input type="text" name="category_name" class="form-control">
                     </div>
                 
             </div>
@@ -93,11 +92,11 @@
                 <h5 class="modal-title" id="exampleModalLabel">Edit Blog Category</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="{{route('store.category')}}">
+            <form method="POST" action="{{route('update.blog.category')}}">
                 @csrf
-                <input type="text" name="cat_id" id="cat_id">
-            <div class="modal-body">
                 
+            <div class="modal-body">
+                <input type="hidden" name="cat_id" id="cat_id">
                     <div class="form-group mb-3">
                         <label for="" class="form-label">Category Name</label>
                         <input type="text" name="category_name" class="form-control" id="cat">
@@ -113,19 +112,20 @@
 </div>
 
 <script>
-    $(document).ready(function(){
-        alert('Working!')
-    });
-    function categoryEdit(id){
+
+function categoryEdit(id){
         $.ajax({
             type: 'GET',
             url: '/edit/blog/category/'+id,
-            dataType: 'json'
+            dataType: 'json',
             success:function(data){
-                console.log(data)
+                // console.log(data)
+                $('#cat').val(data.category_name);
+                $('#cat_id').val(data.id);
             }
         });
     }
+
 </script>
 
 @endsection

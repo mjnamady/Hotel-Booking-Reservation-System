@@ -131,7 +131,7 @@
 
                                                 <div class="col-md-12">
                                                     <label for="input11" class="form-label">Description</label>
-                                                    <textarea class="form-control" name="description" id="myeditorinstance">
+                                                    <textarea class="form-control" name="description" id="mytextarea">
                                                         {!! $editData->description !!}
                                                     </textarea>
                                                 </div>

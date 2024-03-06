@@ -132,8 +132,26 @@ Route::controller(TestimonialController::class)->group(function(){
 //// Blog Category  All Routes
 Route::controller(BlogController::class)->group(function(){
     Route::get('all/category', 'BlogCategory')->name('blog.category'); 
-    Route::post('store/category', 'StoreCategory')->name('store.category');
+    Route::post('store/blog/category', 'StoreCategory')->name('store.blog.category');
     Route::get('/edit/blog/category/{id}', 'EditBlogCategory');
+    Route::post('update/blog/category', 'UpdateCategory')->name('update.blog.category');
+    Route::get('delete/blog/category/{id}', 'DeleteCategory')->name('delete.blog.category');
+
+
+    ////////// All Blogs routes /////////////
+    Route::get('all/blog/post', 'AllBlogPost')->name('all.blog.post'); 
+   
+});
+
+
+//// Blog Post  All Routes
+Route::controller(BlogController::class)->group(function(){
+
+    Route::get('all/blog/post', 'AllBlogPost')->name('all.blog.post'); 
+    Route::get('add/blog/post', 'AddBlogPost')->name('add.blog.post'); 
+    Route::post('store/blog/post', 'StoreBlogPost')->name('store.blog.post'); 
+    Route::get('edit/blog/post/{id}', 'EditBlogPost')->name('edit.blog.post'); 
+    Route::post('update/blog/post', 'UpdateBlogPost')->name('update.blog.post'); 
    
 });
 
