@@ -196,7 +196,7 @@ class BlogController extends Controller
 
     public function CategoryWiseBlog($cat_id)
     {
-        $blogs = BlogPost::where('blogcat_id',$cat_id)->paginate(2);
+        $blogs = BlogPost::where('blogcat_id',$cat_id)->paginate(3);
         $bcategories = BlogCategory::latest()->get();
         $lposts = BlogPost::latest()->limit(3)->get();
         $scat = BlogCategory::findOrFail($cat_id);
