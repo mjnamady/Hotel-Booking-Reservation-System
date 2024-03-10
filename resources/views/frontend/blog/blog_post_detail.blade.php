@@ -50,32 +50,24 @@
                             </p>
                         </div>
 
+                        @php
+                            $comments = App\Models\Comment::where('post_id', $post->id)->where('status', '1')->latest()->get();
+                        @endphp
+
                         <div class="comments-wrap">
                             <h3 class="title">Comments</h3>
                             <ul>
+                                @foreach ($comments as $comment)
                                 <li>
-                                    <img src="assets/img/blog/blog-profile1.jpg" alt="Image">
-                                    <h3>Megan Fox</h3>
-                                    <span>October 14, 2020, 12:10 PM</span>
+                                    <img src="{{ (!empty($comment->user->photo)) ? url('upload/user_images/'.$comment->user->photo) : url('upload/no_image.jpg') }}" alt="Image" style="width:50px;height:50px;">
+                                    <h3>{{ $comment->user->name }}</h3>
+                                    <span>{{ $comment->created_at->format('M D, Y') }}</span>
                                     <p>
-                                        Engineering requires many building blocks and tools. To produce real world 
-                                        results & one must  mathematics and sciences to tangible problems and we 
-                                        are one of the  best company in the world. 
+                                        {{ $comment->message }}
                                     </p>
                                      
                                 </li>
-                                
-                                <li>
-                                    <img src="assets/img/blog/blog-profile2.jpg" alt="Image">
-                                    <h3>Mike Thomas</h3>
-                                    <span>October 14, 2020, 11:30 AM</span>
-                                    <p>
-                                        Engineering requires many building blocks and tools. To produce real world 
-                                        results & one must  mathematics and sciences to tangible problems and we 
-                                        are one of the  best company in the world. 
-                                    </p>
-                                     
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
 
@@ -92,12 +84,14 @@
                             <div class="contact-form">
                                 <h2>Leave A Comment</h2>
                                 @auth
-                                <form id="contactForm">
+                                <form method="POST" action="{{ route('store.comment') }}">
+                                    @csrf
+
                                     <div class="row">
                                         @if ($userData)
-                                            <input type="text" name="user_id" value="{{ $userData->id }}"> 
+                                            <input type="hidden" name="user_id" value="{{ $userData->id }}"> 
                                         @endif
-                                        <input type="text" name="post_id" value="{{ $post->id }}">
+                                        <input type="hidden" name="post_id" value="{{ $post->id }}">
                                         <div class="col-lg-12 col-md-12">
                                             <div class="form-group">
                                                 <textarea name="message" class="form-control" id="message" cols="30" rows="8" required data-error="Write your message" placeholder="Your Message"></textarea>

@@ -203,4 +203,9 @@ class BlogController extends Controller
         return view('frontend.blog.category_wise_blogs',compact('blogs','bcategories','lposts','scat')); 
     } // End method
 
+    public function AllBlogs(){
+        $posts = BlogPost::latest()->paginate(6);
+        return view('frontend.blog.all_blog_view',compact('posts'));
+    } // End method
+
 }

@@ -7,6 +7,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\backend\RoomController;
 use App\Http\Controllers\backend\TeamController;
+use App\Http\Controllers\backend\ReportController;
+use App\Http\Controllers\backend\CommentController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\RoomListController;
 use App\Http\Controllers\backend\RoomTypeController;
@@ -48,7 +50,6 @@ require __DIR__.'/auth.php';
 
 ////////// MY ROUTES ////////////////////
 Route::middleware(['auth', 'role:admin'])->group(function () {
-
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
     Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
@@ -57,32 +58,31 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('admin.update.password');
     
 });
+
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 
+
+// Admin Group Middleware 
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // TEAM AREA ALL ROUTES 
 Route::controller(TeamController::class)->group(function(){
-
     Route::get('all/team', 'AllTeam')->name('all.team');
     Route::get('add/team', 'AddTeam')->name('add.team');
     Route::post('store/team', 'StoreTeam')->name('store.team');
     Route::get('edit/team/{id}', 'EditTeam')->name('edit.team');
     Route::post('update/team', 'UpdateTeam')->name('update.team');
     Route::get('delete/team/{id}', 'DeleteTeam')->name('delete.team');
-
 });
 
 //// Book Area All Routes
 Route::controller(TeamController::class)->group(function(){
-
     Route::get('book/area', 'BookArea')->name('book.area');
     Route::post('book/area/update', 'BookAreaUpdate')->name('book.area.update');
 });
 
 //// RoomType All Routes
 Route::controller(RoomTypeController::class)->group(function(){
-
     Route::get('room/type/list', 'RoomTypeList')->name('room.type.list');
     Route::get('add/room/type', 'AddRoomType')->name('add.room.type');
     Route::post('store/room/type', 'StoreRoomType')->name('store.room.type');
@@ -91,7 +91,6 @@ Route::controller(RoomTypeController::class)->group(function(){
 
 //// Room All Routes
 Route::controller(RoomController::class)->group(function(){
-
     Route::get('edit/room/{id}', 'EditRoom')->name('edit.room');
     Route::post('update/room/{id}', 'UpdateRoom')->name('update.room');
     Route::get('multi/image/delete/{id}', 'MultiImageDelete')->name('multi.image.delete');
@@ -102,20 +101,13 @@ Route::controller(RoomController::class)->group(function(){
     Route::get('delete/room/no/{id}', 'DeleteRoomNumber')->name('delete.room.no');
 
     Route::get('delete/room/{id}', 'DeleteRoom')->name('delete.room');
-
-
 });
-
 
 //// SMTP Setting All Routes
 Route::controller(SettingController::class)->group(function(){
-
     Route::get('smtp/setting', 'SmtpSetting')->name('smtp.setting');
     Route::post('update/smtp', 'UpdateSmtp')->name('update.smtp');
-   
-   
 });
-
 
 //// Testimonial  All Routes
 Route::controller(TestimonialController::class)->group(function(){
@@ -127,7 +119,6 @@ Route::controller(TestimonialController::class)->group(function(){
     Route::get('delete/testimonial/{id}', 'DeleteTestimonial')->name('delete.testimonial');
     
 });
-
 
 //// Blog Category  All Routes
 Route::controller(BlogController::class)->group(function(){
@@ -141,7 +132,6 @@ Route::controller(BlogController::class)->group(function(){
 
 //// Blog Post  All Routes
 Route::controller(BlogController::class)->group(function(){
-
     Route::get('all/blog/post', 'AllBlogPost')->name('all.blog.post'); 
     Route::get('add/blog/post', 'AddBlogPost')->name('add.blog.post'); 
     Route::post('store/blog/post', 'StoreBlogPost')->name('store.blog.post'); 
@@ -151,9 +141,20 @@ Route::controller(BlogController::class)->group(function(){
    
 });
 
-
-
+Route::controller(CommentController::class)->group(function(){
+    Route::get('all/comment', 'AllComment')->name('all.comment'); 
+    Route::post('update/comment/status', 'UpdateCommentStatus')->name('update.comment.status'); 
 });
+
+Route::controller(ReportController::class)->group(function(){
+    Route::get('booking/report', 'BookingReport')->name('booking.report'); 
+    Route::post('booking/report/search', 'BookingReportSearch')->name('booking.report.search'); 
+   
+});
+
+
+
+}); // Admin Group Middleware 
 
 Route::controller(AllRoomsController::class)->group(function(){
 
@@ -167,16 +168,16 @@ Route::controller(AllRoomsController::class)->group(function(){
 });
 
 
-//// Blog Post  All Routes
+//// Frontend Blog Post  All Routes
 Route::controller(BlogController::class)->group(function(){
     Route::get('blog/post/detail/{post_slug}', 'BlogPostDetail');
     Route::get('category/wise/blog/{cat_id}', 'CategoryWiseBlog');
+    Route::get('all/blogs', 'AllBlogs')->name('all.blogs');
    
 });
 
 // Auth Middleware User must have login for access this route 
 Route::middleware(['auth'])->group(function(){
-
     /// CHECKOUT ALL Routes
     Route::controller(BookingController::class)->group(function(){
 
@@ -202,19 +203,17 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/user/bookings', 'UserBooking')->name('user.bookings');
     Route::get('/user/invoice/{id}', 'UserVoice')->name('user.invoice');
-
-
-
     
     });
 
-
     Route::controller(RoomListController::class)->group(function(){
-
         Route::get('/view/room/list', 'ViewRoomList')->name('view.room.list');
         Route::get('/add/room/list', 'AddRoomList')->name('add.room.list');
         Route::post('/store/roomlist', 'StoreRoomList')->name('store.roomlist');
-       
-        });
+    });
 
-}); // End Admin Group Middleware 
+    Route::controller(CommentController::class)->group(function(){
+        Route::post('/store/comment', 'StoreComment')->name('store.comment');
+    });
+
+}); // End Userr Group Middleware 
