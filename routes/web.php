@@ -109,6 +109,12 @@ Route::controller(SettingController::class)->group(function(){
     Route::post('update/smtp', 'UpdateSmtp')->name('update.smtp');
 });
 
+//// Site Setting All Routes
+Route::controller(SettingController::class)->group(function(){
+    Route::get('site/setting', 'SiteSetting')->name('site.setting');
+    Route::post('update/setting', 'UpdateSetting')->name('update.setting');
+});
+
 //// Testimonial  All Routes
 Route::controller(TestimonialController::class)->group(function(){
     Route::get('all/testimonial', 'AllTestimonial')->name('all.testimonial');
