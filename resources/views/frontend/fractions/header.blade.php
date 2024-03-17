@@ -1,3 +1,6 @@
+@php
+    $settings = App\Models\SiteSetting::find(1);
+@endphp
  <!-- Top Header Start -->
  <header class="top-header top-header-bg">
     <div class="container">
@@ -19,11 +22,11 @@
                     <ul>
                         <li>
                             <i class='bx bx-home-alt'></i>
-                            <a href="#">123 Virgil A Stanton, Virginia, USA</a>
+                            <a href="#">{{ $settings->address }}</a>
                         </li>
                         <li>
                             <i class='bx bx-phone-call'></i>
-                            <a href="tel:+1-(123)-456-7890">+1 (123) 456 7890</a>
+                            <a href="tel:+1-(123)-456-7890">{{ $settings->phone }}</a>
                         </li>
                         @auth
                             <li>
@@ -59,9 +62,9 @@
 <div class="navbar-area">
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
-        <a href="index.html" class="logo">
-            <img src="{{asset('frontend/assets/img/logos/logo-1.png')}}" class="logo-one" alt="Logo">
-            <img src="{{asset('frontend/assets/img/logos/footer-logo1.png')}}" class="logo-two" alt="Logo">
+        <a href="{{ url('/') }}" class="logo">
+            <img src="{{asset($settings->logo)}}" class="logo-one" alt="Logo">
+            <img src="{{asset($settings->logo)}}" class="logo-two" alt="Logo">
         </a>
     </div>
 
@@ -69,9 +72,9 @@
     <div class="main-nav">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light ">
-                <a class="navbar-brand" href="index.html">
-                    <img src="{{asset('frontend/assets/img/logos/logo-1.png')}}" class="logo-one" alt="Logo">
-                    <img src="{{asset('frontend/assets/img/logos/footer-logo1.png')}}" class="logo-two" alt="Logo">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="{{asset($settings->logo)}}" class="logo-one" alt="Logo">
+                    <img src="{{asset($settings->logo)}}" class="logo-two" alt="Logo">
                 </a>
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -99,6 +102,12 @@
                                 Recreation 
                             </a>
                             
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('all.gallery.image') }}" class="nav-link">
+                                Gallery
+                            </a>
                         </li>
 
                         <li class="nav-item">

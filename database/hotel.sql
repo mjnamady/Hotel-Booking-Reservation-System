@@ -241,27 +241,6 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 -- Dumping data for table `migrations`
 --
 
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(21, '2014_10_12_000000_create_users_table', 1),
-(22, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-(23, '2019_08_19_000000_create_failed_jobs_table', 1),
-(24, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(25, '2023_12_26_180828_create_teams_table', 1),
-(26, '2023_12_27_194341_create_bookareas_table', 1),
-(27, '2023_12_28_071341_create_room_types_table', 1),
-(28, '2023_12_28_104448_create_rooms_table', 1),
-(29, '2023_12_28_104503_create_facilities_table', 1),
-(30, '2023_12_28_104525_create_multi_images_table', 1),
-(31, '2023_12_30_142120_create_room_numbers_table', 1),
-(32, '2024_01_28_104926_create_bookings_table', 1),
-(33, '2024_01_28_140126_create_room_booked_dates_table', 1),
-(34, '2024_01_28_140524_create_booking_room_lists_table', 1),
-(35, '2024_02_29_160504_create_smtp_settings_table', 1),
-(36, '2024_03_02_130619_create_testimonials_table', 1),
-(37, '2024_03_03_065119_create_blog_categories_table', 1),
-(38, '2024_03_05_104351_create_blog_posts_table', 1),
-(39, '2024_03_07_130226_create_comments_table', 1),
-(40, '2024_03_11_134433_create_site_settings_table', 1);
 
 -- --------------------------------------------------------
 

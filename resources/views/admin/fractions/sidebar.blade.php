@@ -125,6 +125,18 @@
             </ul>
         </li>
 
+              <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                </div>
+                <div class="menu-title">Gallery </div>
+            </a>
+            <ul>
+                <li> <a href="{{route('gallery.image')}}"><i class='bx bx-radio-circle'></i>Gallery Images </a>
+                </li>
+            </ul>
+        </li>
+
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>

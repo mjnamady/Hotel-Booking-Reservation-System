@@ -9,6 +9,7 @@ use App\Http\Controllers\backend\RoomController;
 use App\Http\Controllers\backend\TeamController;
 use App\Http\Controllers\backend\ReportController;
 use App\Http\Controllers\backend\CommentController;
+use App\Http\Controllers\backend\GalleryController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\RoomListController;
 use App\Http\Controllers\backend\RoomTypeController;
@@ -158,6 +159,16 @@ Route::controller(ReportController::class)->group(function(){
    
 });
 
+Route::controller(GalleryController::class)->group(function(){
+    Route::get('gallery/image', 'GalleryImage')->name('gallery.image'); 
+    Route::get('add/image', 'AddImage')->name('add.image'); 
+    Route::post('store/gallery/image', 'StoreGalleryImage')->name('store.gallery.image'); 
+    Route::get('edit/image/{id}', 'EditImage')->name('edit.image'); 
+    Route::post('update/gallery/image', 'UpdateGalleryImage')->name('update.gallery.image'); 
+    Route::get('delete/image/{id}', 'DeleteImage')->name('delete.image'); 
+    Route::post('delete/multi/image', 'DeleteMultiImage')->name('delete.multi.image'); 
+});
+
 
 
 }); // Admin Group Middleware 
@@ -180,6 +191,10 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('category/wise/blog/{cat_id}', 'CategoryWiseBlog');
     Route::get('all/blogs', 'AllBlogs')->name('all.blogs');
    
+});
+
+Route::controller(GalleryController::class)->group(function(){
+    Route::get('all/gallery/image', 'AllGalleryImage')->name('all.gallery.image'); 
 });
 
 // Auth Middleware User must have login for access this route 
