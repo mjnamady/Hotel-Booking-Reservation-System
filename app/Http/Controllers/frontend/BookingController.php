@@ -15,6 +15,9 @@ use App\Models\BookingRoomList;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use App\Mail\BookConfirm;
+use App\Models\User;
+use App\Notifications\BookingComplete;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -169,6 +172,9 @@ class BookingController extends Controller
             'message' => 'Booking Added Successfully',
             'alert-type' => 'success'
         ); 
+
+        $user = User::where('role', 'admin')->get();
+        Notification::send($user, new BookingComplete($request->name));
 
         return redirect('/')->with($notification);  
     } // End Method
@@ -339,6 +345,18 @@ class BookingController extends Controller
             'chroot' => public_path(),
         ]);
         return $pdf->download('invoice.pdf');
+     } // End Method
+
+     public function MarkAsRead(Request $request, $notificationId){
+
+        $user = Auth::user();
+        $notification = $user->notifications->where('id', $notificationId)->first();
+        
+        if($notification){
+            $notification->markAsRead();
+        }
+
+        return response()->json(['count' => $user->unreadNotifications->count()]);
      } // End Method
 
 } 

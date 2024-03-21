@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use Carbon\Carbon;
 use App\Models\Room;
+use App\Models\User;
 use App\Models\booking;
 use App\Models\RoomType;
 use Carbon\CarbonPeriod;
@@ -138,7 +139,5 @@ class RoomListController extends Controller
         ); 
 
         return redirect()->back()->with($notification);  
-
-
     } // End Method
 }

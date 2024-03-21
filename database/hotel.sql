@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2024 at 10:39 PM
+-- Generation Time: Mar 21, 2024 at 03:28 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `bookings`
@@ -124,7 +124,16 @@ CREATE TABLE IF NOT EXISTS `bookings` (
 INSERT INTO `bookings` (`id`, `rooms_id`, `user_id`, `check_in`, `check_out`, `persion`, `number_of_rooms`, `total_night`, `actual_price`, `subtotal`, `discount`, `total_price`, `payment_method`, `transation_id`, `payment_status`, `name`, `email`, `phone`, `country`, `state`, `zip_code`, `address`, `code`, `status`, `created_at`, `updated_at`) VALUES
 (1, 5, 2, '2024-02-04', '2024-02-10', '02', '03', 6.00, 150.00, 2700.00, 270, 2430.00, 'COD', '', '1', 'User', 'user@gmail.com', '08036906317', 'Nigeria', 'Kaduna', '12121', 'Cross River', '881390611', 1, '2024-02-04 04:31:35', '2024-02-12 20:32:38'),
 (2, 5, 2, '2024-02-05', '2024-02-09', '03', '02', 5.00, 150.00, 1500.00, 150, 1350.00, 'Stripe', NULL, '1', 'User', 'user@gmail.com', '08036906317', 'Nigeria', 'Cross River', '90088', 'Cross River', '560822810', 1, '2024-02-05 12:38:48', '2024-02-09 14:29:59'),
-(3, 4, 1, '2024-02-11', '2024-02-16', '2', '1', 5.00, 100.00, 500.00, 50, 450.00, 'COD', NULL, '1', 'Mustapha', 'mustaphajnamadi@gmail.com', '09140699104', 'Nigeria', 'Dhaka', '98789', 'Kaduna', '411558064', 1, '2024-02-11 21:30:38', '2024-02-13 11:13:45');
+(3, 4, 1, '2024-02-11', '2024-02-16', '2', '1', 5.00, 100.00, 500.00, 50, 450.00, 'COD', NULL, '1', 'Mustapha', 'mustaphajnamadi@gmail.com', '09140699104', 'Nigeria', 'Dhaka', '98789', 'Kaduna', '411558064', 1, '2024-02-11 21:30:38', '2024-02-13 11:13:45'),
+(4, 6, 1, '2024-03-17', '2024-03-23', '03', '01', 6.00, 170.00, 1020.00, 102, 918.00, 'COD', '', '0', 'Admin', 'admin@gmail.com', '08140699104', 'Nigeria', 'Cross River', '97987', 'No 6 Asmau makarfi street kaduna, kaduna', '840600845', 0, '2024-03-18 04:47:41', '2024-03-18 04:47:41'),
+(5, 6, 2, '2024-03-18', '2024-03-23', '03', '01', 5.00, 170.00, 850.00, 85, 765.00, 'COD', '', '0', 'User', 'user@gmail.com', '08036906317', 'UAE', 'Dakha', '23234', 'Cross River', '662668797', 0, '2024-03-19 03:24:04', '2024-03-19 03:24:04'),
+(6, 5, 2, '2024-03-20', '2024-03-27', '02', '01', 7.00, 150.00, 1050.00, 105, 945.00, 'COD', '', '1', 'User', 'user@gmail.com', '08036906317', 'UAE', 'kano', '76778', 'Cross River', '42220657', 1, '2024-03-19 03:58:46', '2024-03-19 17:36:40'),
+(7, 7, 2, '2024-03-27', '2024-03-31', '03', '01', 4.00, 200.00, 800.00, 40, 760.00, 'COD', '', '0', 'User', 'user@gmail.com', '08036906317', 'UAE', 'Dakha', '65646', 'Cross River', '555224351', 0, '2024-03-19 04:46:21', '2024-03-19 04:46:21'),
+(8, 7, 1, '2024-03-23', '2024-03-25', '02', '01', 2.00, 200.00, 400.00, 20, 380.00, 'COD', '', '0', 'Admin', 'admin@gmail.com', '08140699104', 'China', 'Baijin', '09900', 'Kaduna', '842223355', 0, '2024-03-19 17:43:52', '2024-03-19 17:43:52'),
+(9, 4, 1, '2024-03-21', '2024-03-23', '01', '01', 2.00, 100.00, 200.00, 20, 180.00, 'COD', '', '0', 'Admin', 'admin@gmail.com', '08140699104', 'Japan', 'Budapest', '87678', 'Kaduna', '524328767', 0, '2024-03-19 18:30:41', '2024-03-19 18:30:41'),
+(10, 6, 1, '2024-03-26', '2024-03-31', '03', '01', 5.00, 170.00, 850.00, 85, 765.00, 'COD', '', '0', 'Admin', 'admin@gmail.com', '08140699104', 'UK', 'Dakha', '76567', 'Kaduna', '829645941', 0, '2024-03-19 21:56:08', '2024-03-19 21:56:08'),
+(11, 6, 1, '2024-03-21', '2024-03-23', '01', '01', 2.00, 170.00, 340.00, 34, 306.00, 'COD', '', '0', 'Admin', 'admin@gmail.com', '08140699104', 'France', 'Baijin', '78678', 'Kaduna', '391872446', 0, '2024-03-19 21:58:02', '2024-03-19 21:58:02'),
+(12, 6, 1, '2024-03-29', '2024-03-31', '02', '01', 2.00, 170.00, 340.00, 34, 306.00, 'COD', '', '0', 'Admin', 'admin@gmail.com', '08140699104', 'UAE', 'Dakha', '6567', 'Kaduna', '918091646', 0, '2024-03-19 21:59:45', '2024-03-19 21:59:45');
 
 -- --------------------------------------------------------
 
@@ -140,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `booking_room_lists` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `booking_room_lists`
@@ -150,7 +159,8 @@ INSERT INTO `booking_room_lists` (`id`, `booking_id`, `room_id`, `room_number_id
 (3, 2, 5, 18, '2024-02-09 09:13:24', '2024-02-09 09:13:24'),
 (4, 2, 5, 19, '2024-02-09 09:13:34', '2024-02-09 09:13:34'),
 (5, 3, 4, 21, '2024-02-11 21:34:57', '2024-02-11 21:34:57'),
-(6, 1, 5, 20, '2024-02-12 19:46:03', '2024-02-12 19:46:03');
+(6, 1, 5, 20, '2024-02-12 19:46:03', '2024-02-12 19:46:03'),
+(7, 6, 5, 18, '2024-03-19 17:36:25', '2024-03-19 17:36:25');
 
 -- --------------------------------------------------------
 
@@ -168,6 +178,32 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE IF NOT EXISTS `contacts` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `subject` text NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `subject`, `message`, `created_at`, `updated_at`) VALUES
+(1, 'Namadi', 'mustaphajnamadi@gmail.coms', '09079890', 'Testing the contact form', 'I\'m excited to found your services..', '2024-03-18 03:33:37', NULL),
+(2, 'Aisha', 'aishamustapha@gmail.com', '9890007', 'You are dong great!', 'This platform is developed by my love.', '2024-03-18 03:36:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -227,6 +263,42 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `galleries`
+--
+
+CREATE TABLE IF NOT EXISTS `galleries` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `photo` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `galleries`
+--
+
+INSERT INTO `galleries` (`id`, `photo`, `created_at`, `updated_at`) VALUES
+(15, 'upload/gallery/1793723023247500.jpg', '2024-03-17 05:19:38', '2024-03-17 05:19:38'),
+(16, 'upload/gallery/1793723023656263.jpg', '2024-03-17 05:19:38', '2024-03-17 05:19:38'),
+(17, 'upload/gallery/1793723024151380.jpg', '2024-03-17 05:19:39', '2024-03-17 05:19:39'),
+(18, 'upload/gallery/1793723024563451.jpg', '2024-03-17 05:19:39', '2024-03-17 05:19:39'),
+(19, 'upload/gallery/1793723058347438.jpg', '2024-03-17 05:20:11', '2024-03-17 05:20:11'),
+(20, 'upload/gallery/1793723058694736.jpg', '2024-03-17 05:20:12', '2024-03-17 05:20:12'),
+(21, 'upload/gallery/1793723059063054.jpg', '2024-03-17 05:20:12', '2024-03-17 05:20:12'),
+(22, 'upload/gallery/1793723059349754.jpg', '2024-03-17 05:20:12', '2024-03-17 05:20:12'),
+(23, 'upload/gallery/1793723078389474.jpg', '2024-03-17 05:20:30', '2024-03-17 05:20:30'),
+(24, 'upload/gallery/1793723078839779.jpg', '2024-03-17 05:20:31', '2024-03-17 05:20:31'),
+(25, 'upload/gallery/1793723079148145.jpg', '2024-03-17 05:20:31', '2024-03-17 05:20:31'),
+(26, 'upload/gallery/1793723079520450.jpg', '2024-03-17 05:20:31', '2024-03-17 05:20:31'),
+(27, 'upload/gallery/1793723099657441.jpg', '2024-03-17 05:20:51', '2024-03-17 05:20:51'),
+(28, 'upload/gallery/1793723100017609.jpg', '2024-03-17 05:20:51', '2024-03-17 05:20:51'),
+(29, 'upload/gallery/1793723100293590.jpg', '2024-03-17 05:20:51', '2024-03-17 05:20:51'),
+(30, 'upload/gallery/1793723100623816.jpg', '2024-03-17 05:20:52', '2024-03-17 05:20:52');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -235,12 +307,65 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
 --
 
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(39, '2014_10_12_000000_create_users_table', 1),
+(40, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(41, '2019_08_19_000000_create_failed_jobs_table', 1),
+(42, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(43, '2023_12_26_180828_create_teams_table', 1),
+(44, '2023_12_27_194341_create_bookareas_table', 1),
+(45, '2023_12_28_071341_create_room_types_table', 1),
+(46, '2023_12_28_104448_create_rooms_table', 1),
+(47, '2023_12_28_104503_create_facilities_table', 1),
+(48, '2023_12_28_104525_create_multi_images_table', 1),
+(49, '2023_12_30_142120_create_room_numbers_table', 1),
+(50, '2024_01_28_104926_create_bookings_table', 1),
+(51, '2024_01_28_140126_create_room_booked_dates_table', 1),
+(52, '2024_01_28_140524_create_booking_room_lists_table', 1),
+(53, '2024_02_29_160504_create_smtp_settings_table', 1),
+(54, '2024_03_02_130619_create_testimonials_table', 1),
+(55, '2024_03_03_065119_create_blog_categories_table', 1),
+(56, '2024_03_05_104351_create_blog_posts_table', 1),
+(57, '2024_03_07_130226_create_comments_table', 1),
+(58, '2024_03_11_134433_create_site_settings_table', 1),
+(59, '2024_03_16_061401_create_galleries_table', 2),
+(60, '2024_03_17_161905_create_contacts_table', 3),
+(61, '2024_03_18_184745_create_notifications_table', 4),
+(62, '2024_03_20_153345_create_permission_tables', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_permissions`
+--
+
+CREATE TABLE IF NOT EXISTS `model_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL,
+  PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_roles`
+--
+
+CREATE TABLE IF NOT EXISTS `model_has_roles` (
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL,
+  PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -278,6 +403,35 @@ INSERT INTO `multi_images` (`id`, `rooms_id`, `multi_img`, `created_at`, `update
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` char(36) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `notifiable_type` varchar(255) NOT NULL,
+  `notifiable_id` bigint(20) UNSIGNED NOT NULL,
+  `data` text NOT NULL,
+  `read_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
+('4293b12f-89ab-46a4-9327-51c709eaaf5d', 'App\\Notifications\\BookingComplete', 'App\\Models\\User', 1, '{\"message\":\"New Booking Added in Hotel\"}', '2024-03-19 21:53:42', '2024-03-19 18:30:59', '2024-03-19 21:53:42'),
+('9a2dbf91-9fd3-4521-be61-71feca0d72dd', 'App\\Notifications\\BookingComplete', 'App\\Models\\User', 1, '{\"message\":\"New Booking Added in Hotel\"}', '2024-03-19 21:58:20', '2024-03-19 21:56:09', '2024-03-19 21:58:20'),
+('de78e925-109b-468b-9675-49ca3e10eee4', 'App\\Notifications\\BookingComplete', 'App\\Models\\User', 1, '{\"message\":\"New Booking Added in Hotel\"}', '2024-03-19 21:58:31', '2024-03-19 21:58:03', '2024-03-19 21:58:31'),
+('eaea16b8-ec95-4436-8165-da1251ab5f68', 'App\\Notifications\\BookingComplete', 'App\\Models\\User', 1, '{\"message\":\"New Booking Added in Hotel\"}', NULL, '2024-03-19 21:59:45', '2024-03-19 21:59:45');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `password_reset_tokens`
 --
 
@@ -287,6 +441,57 @@ CREATE TABLE IF NOT EXISTS `password_reset_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE IF NOT EXISTS `permissions` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `group_name` varchar(255) DEFAULT NULL,
+  `guard_name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `group_name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'team.menu', 'Team', 'web', '2024-03-21 14:22:06', '2024-03-21 14:22:06'),
+(3, 'team.all', 'Team', 'web', '2024-03-21 18:14:55', '2024-03-21 18:14:55'),
+(4, 'team.add', 'Team', 'web', '2024-03-21 18:15:08', '2024-03-21 18:15:08'),
+(5, 'team.edit', 'Team', 'web', '2024-03-21 20:48:20', '2024-03-21 20:48:20'),
+(6, 'team.delete', 'Team', 'web', '2024-03-21 20:48:20', '2024-03-21 20:48:20'),
+(7, 'bookarea.menu', 'Book Area', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(8, 'update.bookarea', 'Book Area', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(9, 'room.type.menu', 'Manage Room', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(10, 'room.type', 'Manage Room', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(11, 'booking.menu', 'Booking', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(12, 'booking.list', 'Booking', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(13, 'booking.add', 'Booking', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(14, 'room.list.menu', 'RoomList', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(15, 'room.list', 'RoomList', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(16, 'setting.menu', 'Setting', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(17, 'testimonial.menu', 'Testimonial', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(18, 'testimonial.all', 'Testimonial', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(19, 'testimonial.add', 'Testimonial', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(20, 'testimonial.edit', 'Testimonial', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(21, 'testimonial.delete', 'Testimonial', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(22, 'blog.menu', 'Blog', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(23, 'blog.category', 'Blog', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(24, 'blog.post.list', 'Blog', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(25, 'comment.menu', 'Manage Comment', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(26, 'booking.report.menu', 'Booking Report', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(27, 'gallery.menu', 'Hotel Gallery', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(28, 'contact.message.menu', 'Contact Message', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47'),
+(29, 'role.permission.menu', 'Role and Permission', 'web', '2024-03-21 21:23:47', '2024-03-21 21:23:47');
 
 -- --------------------------------------------------------
 
@@ -308,6 +513,35 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `guard_name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_has_permissions`
+--
+
+CREATE TABLE IF NOT EXISTS `role_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  PRIMARY KEY (`permission_id`,`role_id`),
+  KEY `role_has_permissions_role_id_foreign` (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -360,7 +594,7 @@ CREATE TABLE IF NOT EXISTS `room_booked_dates` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `room_booked_dates`
@@ -381,7 +615,42 @@ INSERT INTO `room_booked_dates` (`id`, `booking_id`, `room_id`, `book_date`, `cr
 (17, 3, 4, '2024-02-12', '2024-02-11 20:30:39', '2024-02-11 20:30:39'),
 (18, 3, 4, '2024-02-13', '2024-02-11 20:30:39', '2024-02-11 20:30:39'),
 (19, 3, 4, '2024-02-14', '2024-02-11 20:30:39', '2024-02-11 20:30:39'),
-(20, 3, 4, '2024-02-15', '2024-02-11 20:30:39', '2024-02-11 20:30:39');
+(20, 3, 4, '2024-02-15', '2024-02-11 20:30:39', '2024-02-11 20:30:39'),
+(21, 4, 6, '2024-03-17', '2024-03-18 04:47:41', '2024-03-18 04:47:41'),
+(22, 4, 6, '2024-03-18', '2024-03-18 04:47:42', '2024-03-18 04:47:42'),
+(23, 4, 6, '2024-03-19', '2024-03-18 04:47:42', '2024-03-18 04:47:42'),
+(24, 4, 6, '2024-03-20', '2024-03-18 04:47:42', '2024-03-18 04:47:42'),
+(25, 4, 6, '2024-03-21', '2024-03-18 04:47:42', '2024-03-18 04:47:42'),
+(26, 4, 6, '2024-03-22', '2024-03-18 04:47:42', '2024-03-18 04:47:42'),
+(27, 5, 6, '2024-03-18', '2024-03-19 03:24:04', '2024-03-19 03:24:04'),
+(28, 5, 6, '2024-03-19', '2024-03-19 03:24:04', '2024-03-19 03:24:04'),
+(29, 5, 6, '2024-03-20', '2024-03-19 03:24:04', '2024-03-19 03:24:04'),
+(30, 5, 6, '2024-03-21', '2024-03-19 03:24:04', '2024-03-19 03:24:04'),
+(31, 5, 6, '2024-03-22', '2024-03-19 03:24:05', '2024-03-19 03:24:05'),
+(32, 6, 5, '2024-03-20', '2024-03-19 03:58:46', '2024-03-19 03:58:46'),
+(33, 6, 5, '2024-03-21', '2024-03-19 03:58:46', '2024-03-19 03:58:46'),
+(34, 6, 5, '2024-03-22', '2024-03-19 03:58:46', '2024-03-19 03:58:46'),
+(35, 6, 5, '2024-03-23', '2024-03-19 03:58:46', '2024-03-19 03:58:46'),
+(36, 6, 5, '2024-03-24', '2024-03-19 03:58:46', '2024-03-19 03:58:46'),
+(37, 6, 5, '2024-03-25', '2024-03-19 03:58:46', '2024-03-19 03:58:46'),
+(38, 6, 5, '2024-03-26', '2024-03-19 03:58:46', '2024-03-19 03:58:46'),
+(39, 7, 7, '2024-03-27', '2024-03-19 04:46:21', '2024-03-19 04:46:21'),
+(40, 7, 7, '2024-03-28', '2024-03-19 04:46:21', '2024-03-19 04:46:21'),
+(41, 7, 7, '2024-03-29', '2024-03-19 04:46:21', '2024-03-19 04:46:21'),
+(42, 7, 7, '2024-03-30', '2024-03-19 04:46:21', '2024-03-19 04:46:21'),
+(43, 8, 7, '2024-03-23', '2024-03-19 17:43:52', '2024-03-19 17:43:52'),
+(44, 8, 7, '2024-03-24', '2024-03-19 17:43:52', '2024-03-19 17:43:52'),
+(45, 9, 4, '2024-03-21', '2024-03-19 18:30:42', '2024-03-19 18:30:42'),
+(46, 9, 4, '2024-03-22', '2024-03-19 18:30:43', '2024-03-19 18:30:43'),
+(47, 10, 6, '2024-03-26', '2024-03-19 21:56:08', '2024-03-19 21:56:08'),
+(48, 10, 6, '2024-03-27', '2024-03-19 21:56:08', '2024-03-19 21:56:08'),
+(49, 10, 6, '2024-03-28', '2024-03-19 21:56:08', '2024-03-19 21:56:08'),
+(50, 10, 6, '2024-03-29', '2024-03-19 21:56:08', '2024-03-19 21:56:08'),
+(51, 10, 6, '2024-03-30', '2024-03-19 21:56:08', '2024-03-19 21:56:08'),
+(52, 11, 6, '2024-03-21', '2024-03-19 21:58:02', '2024-03-19 21:58:02'),
+(53, 11, 6, '2024-03-22', '2024-03-19 21:58:02', '2024-03-19 21:58:02'),
+(54, 12, 6, '2024-03-29', '2024-03-19 21:59:45', '2024-03-19 21:59:45'),
+(55, 12, 6, '2024-03-30', '2024-03-19 21:59:45', '2024-03-19 21:59:45');
 
 -- --------------------------------------------------------
 
@@ -579,10 +848,33 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `phone`, `address`, `photo`, `role`, `status`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', NULL, '08140699104', 'No 6 Asmau makarfi street kaduna, kaduna', '202312191954avatar-1.png', 'admin', 'active', '$2y$12$2.IHKYs6TR4IT1O2hYbX..B61Huc9bIVwKfjXwNxC9D8hEe52Ugjy', NULL, NULL, '2023-12-19 19:41:15'),
+(1, 'Admin', 'admin@gmail.com', NULL, '08140699104', 'Kaduna', '202312191954avatar-1.png', 'admin', 'active', '$2y$12$2.IHKYs6TR4IT1O2hYbX..B61Huc9bIVwKfjXwNxC9D8hEe52Ugjy', NULL, NULL, '2023-12-19 19:41:15'),
 (2, 'User', 'user@gmail.com', NULL, '08036906317', 'Cross River', '202402040522202012031949Ambrose-Chui-Cropped-200x200.jpg', 'user', 'active', '$2y$12$KmbGm3rX7Yt6EVnYn9MZg.Ua.Y3LFePZwZMccjPEB2kRT1RTCD/jy', 'Sc69JTu9ghtOSWPOoieTGNGEgpRxR6yK28f39jFp8qKSLvqUIci7qldykKxt', NULL, '2024-02-04 03:22:00'),
 (3, 'Test', 'test@test.com', NULL, NULL, NULL, NULL, 'user', 'active', '$2y$12$YtHxebeiTRAf7eoL/CYfF.0hG5KYj/EzwRaTYTyueoB9s5Ers6C4u', NULL, '2023-12-17 10:13:33', '2023-12-17 10:13:33'),
 (4, 'Namadi', 'namadi@gmail.com', NULL, NULL, NULL, NULL, 'user', 'active', '$2y$12$8EZrOojQY4cCNjQxcL3zqu.FpgpFBOBBRRdiWEwQzGC6X8A/N3a.2', NULL, '2023-12-25 09:08:51', '2023-12-25 09:08:51');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

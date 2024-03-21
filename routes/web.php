@@ -9,7 +9,9 @@ use App\Http\Controllers\backend\RoomController;
 use App\Http\Controllers\backend\TeamController;
 use App\Http\Controllers\backend\ReportController;
 use App\Http\Controllers\backend\CommentController;
+use App\Http\Controllers\backend\ContactUsController;
 use App\Http\Controllers\backend\GalleryController;
+use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\RoomListController;
 use App\Http\Controllers\backend\RoomTypeController;
@@ -170,6 +172,27 @@ Route::controller(GalleryController::class)->group(function(){
 });
 
 
+Route::controller(ContactUsController::class)->group(function(){
+    Route::get('contact/us', 'ContactUs')->name('contact.us'); 
+
+});
+
+
+Route::controller(RoleController::class)->group(function(){
+    Route::get('all/permission', 'AllPermission')->name('all.permission'); 
+    Route::get('add/permission', 'AddPermission')->name('add.permission'); 
+    Route::post('store/permission', 'StorePermission')->name('store.permission'); 
+    Route::get('edit/permission/{id}', 'EditPermission')->name('edit.permission'); 
+    Route::post('update/permission', 'UpdatePermission')->name('update.permission'); 
+    Route::get('delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+
+    Route::get('permission/import', 'PermissionImport')->name('permission.import'); 
+    Route::get('export', 'Export')->name('export'); 
+    Route::post('import', 'Import')->name('import'); 
+
+});
+
+
 
 }); // Admin Group Middleware 
 
@@ -195,6 +218,12 @@ Route::controller(BlogController::class)->group(function(){
 
 Route::controller(GalleryController::class)->group(function(){
     Route::get('all/gallery/image', 'AllGalleryImage')->name('all.gallery.image'); 
+});
+
+Route::controller(ContactUsController::class)->group(function(){
+    Route::get('contact/page', 'ContactPage')->name('contact.page'); 
+    Route::post('store/message', 'StoreMessage')->name('store.message'); 
+
 });
 
 // Auth Middleware User must have login for access this route 
@@ -237,4 +266,9 @@ Route::middleware(['auth'])->group(function(){
         Route::post('/store/comment', 'StoreComment')->name('store.comment');
     });
 
-}); // End Userr Group Middleware 
+}); // End User Group Middleware 
+
+// Notification all route
+Route::controller(BookingController::class)->group(function(){
+    Route::post('/mark-notification-as-read/{notification}', 'MarkAsRead'); 
+});

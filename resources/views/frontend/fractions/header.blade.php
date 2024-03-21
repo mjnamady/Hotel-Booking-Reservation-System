@@ -136,7 +136,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="contact.html" class="nav-link">
+                            <a href="{{ route('contact.page') }}" class="nav-link">
                                 Contact
                             </a>
                         </li>
