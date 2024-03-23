@@ -177,7 +177,7 @@ Route::controller(ContactUsController::class)->group(function(){
 
 });
 
-
+//// Permission All Routes
 Route::controller(RoleController::class)->group(function(){
     Route::get('all/permission', 'AllPermission')->name('all.permission'); 
     Route::get('add/permission', 'AddPermission')->name('add.permission'); 
@@ -189,7 +189,20 @@ Route::controller(RoleController::class)->group(function(){
     Route::get('permission/import', 'PermissionImport')->name('permission.import'); 
     Route::get('export', 'Export')->name('export'); 
     Route::post('import', 'Import')->name('import'); 
+});
 
+//// Role All Routes
+Route::controller(RoleController::class)->group(function(){
+    Route::get('all/roles', 'AllRoles')->name('all.roles'); 
+    Route::get('add/role', 'AddRole')->name('add.role'); 
+    Route::post('store/role', 'StoreRole')->name('store.role'); 
+    Route::get('edit/role/{id}', 'EditRole')->name('edit.role'); 
+    Route::post('update/role', 'UpdateRole')->name('update.role'); 
+    Route::get('delete/role/{id}', 'DeleteRole')->name('delete.role');
+
+    Route::get('add/role/permission', 'AddRolePermission')->name('add.role.permission'); 
+    Route::get('export', 'Export')->name('export'); 
+    Route::post('import', 'Import')->name('import'); 
 });
 
 
