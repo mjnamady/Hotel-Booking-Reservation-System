@@ -37,6 +37,39 @@
                                     </select>
                                 </div>
 
+                                <div class="form-check">
+									<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+									<label class="form-check-label" for="CheckDefaultMain">Select All</label>
+								</div>
+
+                                <hr>
+
+                                <div class="row">
+
+                                    @foreach ($permission_groups as $permG)
+                                        <div class="col-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">{{ $permG->group_name }}</label>
+                                            </div>
+                                            <br>
+                                        </div>
+
+                                        @php
+                                            $permissions = App\Models\User::getPermissions($permG->group_name);
+                                        @endphp
+
+                                        <div class="col-9">
+                                            @foreach ($permissions as $permission)
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                    <label class="form-check-label" for="flexCheckDefault">{{ $permission->name }}</label>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endforeach
+                                </div>
+
                                 <div class="col-md-12">
                                     <div class="d-md-flex d-grid align-items-center gap-3">
                                         <button type="submit" class="btn btn-primary px-4">Add Role </button>

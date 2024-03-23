@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PermissionExport;
 use App\Imports\PermissionImport;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -149,8 +150,8 @@ class RoleController extends Controller
     public function AddRolePermission(){
         $roles = Role::all();
         $permissions = Permission::all();
-        
-        return view('backend.pages.rolesetup.add_role_permission', compact('roles','permissions'));
+        $permission_groups = User::getPermissionGroup();
+        return view('backend.pages.rolesetup.add_role_permission', compact('roles','permissions','permission_groups'));
     } // End Method
 
 
