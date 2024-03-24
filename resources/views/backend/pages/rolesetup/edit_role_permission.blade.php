@@ -4,7 +4,7 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Roles </div>
+        <div class="breadcrumb-title pe-3"> Edit Roles </div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
@@ -24,17 +24,13 @@
                     <div class="card">
                         <div class="card-body p-4">
                             {{-- <h5 class="mb-4">Add Roles </h5> --}}
-                            <form class="row g-3" method="POST" action="{{route('role.permission.store')}}">
+                            <form class="row g-3" method="POST" action="{{route('role.permission.update')}}">
                                 @csrf
 
                                 <div class="col-md-6">
                                     <label for="input2" class="form-label">Role Name </label>
-                                    <select name="role_id" class="form-select mb-3" aria-label="Default select example">
-                                        <option selected="">Select Role</option>
-                                        @foreach ($roles as $role)
-                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="hidden" name="id" value="{{ $role->id }}">
+                                    <h2>{{ $role->name }}</h2>
                                 </div>
 
                                 <div class="form-check">
@@ -47,22 +43,22 @@
                                 <div class="row">
 
                                     @foreach ($permission_groups as $permG)
+                                    
                                         <div class="col-3">
+                                            @php
+                                                $permissions = App\Models\User::getPermissions($permG->group_name);
+                                            @endphp
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input class="form-check-input" type="checkbox" id="flexCheckDefault" {{ App\Models\User::roleHasPermission($role,$permissions) ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="flexCheckDefault">{{ $permG->group_name }}</label>
                                             </div>
                                             <br>
                                         </div>
 
-                                        @php
-                                            $permissions = App\Models\User::getPermissions($permG->group_name);
-                                        @endphp
-
                                         <div class="col-9">
                                             @foreach ($permissions as $permission)
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="permission[]" value="{{ $permission->id }}" id="CheckDefault{{ $permission->id }}">
+                                                    <input class="form-check-input" type="checkbox" name="permission[]" value="{{ $permission->id }}" id="CheckDefault{{ $permission->id }}" {{ $role->hasPermissionTo($permission->name) ? 'checked' : '' }}>
                                                     <label class="form-check-label" for="flexCheckDefault">{{ $permission->name }}</label>
                                                 </div>
                                             @endforeach
