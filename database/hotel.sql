@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2024 at 03:28 PM
+-- Generation Time: Mar 26, 2024 at 03:07 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -132,8 +132,7 @@ INSERT INTO `bookings` (`id`, `rooms_id`, `user_id`, `check_in`, `check_out`, `p
 (8, 7, 1, '2024-03-23', '2024-03-25', '02', '01', 2.00, 200.00, 400.00, 20, 380.00, 'COD', '', '0', 'Admin', 'admin@gmail.com', '08140699104', 'China', 'Baijin', '09900', 'Kaduna', '842223355', 0, '2024-03-19 17:43:52', '2024-03-19 17:43:52'),
 (9, 4, 1, '2024-03-21', '2024-03-23', '01', '01', 2.00, 100.00, 200.00, 20, 180.00, 'COD', '', '0', 'Admin', 'admin@gmail.com', '08140699104', 'Japan', 'Budapest', '87678', 'Kaduna', '524328767', 0, '2024-03-19 18:30:41', '2024-03-19 18:30:41'),
 (10, 6, 1, '2024-03-26', '2024-03-31', '03', '01', 5.00, 170.00, 850.00, 85, 765.00, 'COD', '', '0', 'Admin', 'admin@gmail.com', '08140699104', 'UK', 'Dakha', '76567', 'Kaduna', '829645941', 0, '2024-03-19 21:56:08', '2024-03-19 21:56:08'),
-(11, 6, 1, '2024-03-21', '2024-03-23', '01', '01', 2.00, 170.00, 340.00, 34, 306.00, 'COD', '', '0', 'Admin', 'admin@gmail.com', '08140699104', 'France', 'Baijin', '78678', 'Kaduna', '391872446', 0, '2024-03-19 21:58:02', '2024-03-19 21:58:02'),
-(12, 6, 1, '2024-03-29', '2024-03-31', '02', '01', 2.00, 170.00, 340.00, 34, 306.00, 'COD', '', '0', 'Admin', 'admin@gmail.com', '08140699104', 'UAE', 'Dakha', '6567', 'Kaduna', '918091646', 0, '2024-03-19 21:59:45', '2024-03-19 21:59:45');
+(11, 6, 1, '2024-03-21', '2024-03-23', '01', '01', 2.00, 170.00, 340.00, 34, 306.00, 'COD', '', '0', 'Admin', 'admin@gmail.com', '08140699104', 'France', 'Baijin', '78678', 'Kaduna', '391872446', 0, '2024-03-19 21:58:02', '2024-03-19 21:58:02');
 
 -- --------------------------------------------------------
 
@@ -367,6 +366,14 @@ CREATE TABLE IF NOT EXISTS `model_has_roles` (
   KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\Models\\User', 1),
+(3, 'App\\Models\\User', 7);
+
 -- --------------------------------------------------------
 
 --
@@ -529,7 +536,17 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'Super Admin', 'web', '2024-03-22 23:58:33', '2024-03-22 23:58:33'),
+(2, 'Admin', 'web', '2024-03-22 23:59:46', '2024-03-22 23:59:46'),
+(3, 'Receptionist', 'web', '2024-03-23 00:00:12', '2024-03-23 00:00:12'),
+(4, 'Manager', 'web', '2024-03-23 00:00:37', '2024-03-23 00:00:37');
 
 -- --------------------------------------------------------
 
@@ -543,6 +560,54 @@ CREATE TABLE IF NOT EXISTS `role_has_permissions` (
   PRIMARY KEY (`permission_id`,`role_id`),
   KEY `role_has_permissions_role_id_foreign` (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(1, 1),
+(1, 4),
+(3, 1),
+(3, 4),
+(4, 1),
+(4, 4),
+(5, 1),
+(5, 4),
+(6, 1),
+(6, 4),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(14, 1),
+(15, 1),
+(16, 1),
+(17, 1),
+(17, 4),
+(18, 1),
+(18, 4),
+(19, 1),
+(19, 4),
+(20, 1),
+(20, 4),
+(21, 1),
+(21, 4),
+(22, 1),
+(23, 1),
+(24, 1),
+(25, 1),
+(26, 1),
+(26, 2),
+(27, 1),
+(27, 2),
+(28, 1),
+(28, 2),
+(28, 3),
+(29, 1);
 
 -- --------------------------------------------------------
 
@@ -841,17 +906,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `phone`, `address`, `photo`, `role`, `status`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', NULL, '08140699104', 'Kaduna', '202312191954avatar-1.png', 'admin', 'active', '$2y$12$2.IHKYs6TR4IT1O2hYbX..B61Huc9bIVwKfjXwNxC9D8hEe52Ugjy', NULL, NULL, '2023-12-19 19:41:15'),
+(1, 'Admin', 'admin@gmail.com', NULL, '08140699104', 'Kaduna', '202312191954avatar-1.png', 'admin', 'active', '$2y$12$2.IHKYs6TR4IT1O2hYbX..B61Huc9bIVwKfjXwNxC9D8hEe52Ugjy', NULL, NULL, '2024-03-25 14:24:21'),
 (2, 'User', 'user@gmail.com', NULL, '08036906317', 'Cross River', '202402040522202012031949Ambrose-Chui-Cropped-200x200.jpg', 'user', 'active', '$2y$12$KmbGm3rX7Yt6EVnYn9MZg.Ua.Y3LFePZwZMccjPEB2kRT1RTCD/jy', 'Sc69JTu9ghtOSWPOoieTGNGEgpRxR6yK28f39jFp8qKSLvqUIci7qldykKxt', NULL, '2024-02-04 03:22:00'),
 (3, 'Test', 'test@test.com', NULL, NULL, NULL, NULL, 'user', 'active', '$2y$12$YtHxebeiTRAf7eoL/CYfF.0hG5KYj/EzwRaTYTyueoB9s5Ers6C4u', NULL, '2023-12-17 10:13:33', '2023-12-17 10:13:33'),
-(4, 'Namadi', 'namadi@gmail.com', NULL, NULL, NULL, NULL, 'user', 'active', '$2y$12$8EZrOojQY4cCNjQxcL3zqu.FpgpFBOBBRRdiWEwQzGC6X8A/N3a.2', NULL, '2023-12-25 09:08:51', '2023-12-25 09:08:51');
+(4, 'Namadi', 'namadi@gmail.com', NULL, NULL, NULL, NULL, 'user', 'active', '$2y$12$8EZrOojQY4cCNjQxcL3zqu.FpgpFBOBBRRdiWEwQzGC6X8A/N3a.2', NULL, '2023-12-25 09:08:51', '2023-12-25 09:08:51'),
+(7, 'Aisha', 'aishamustapha@gmail.com', NULL, '09890007', 'Minna', '202403251423avatar-2.png', 'admin', 'active', '$2y$12$hWVp.s3NV9lTzqs2qGSgOO9QJSu7VbunLcG4ycrTYukQBtIVEjzUq', NULL, '2024-03-25 13:13:49', '2024-03-26 07:42:20');
 
 --
 -- Constraints for dumped tables
