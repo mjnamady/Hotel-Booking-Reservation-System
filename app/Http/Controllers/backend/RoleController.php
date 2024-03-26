@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use App\Exports\PermissionExport;
 use App\Imports\PermissionImport;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
@@ -158,6 +158,7 @@ class RoleController extends Controller
     public function RolePermissionStore(Request $request){
         $role_id = $request->role_id;
         $permissions = $request->permission;
+
         $data = array();
         foreach ($permissions as $perm_id) {
             $data['role_id'] = $role_id;
@@ -187,19 +188,21 @@ class RoleController extends Controller
         return view('backend.pages.rolesetup.edit_role_permission', compact('role','permissions','permission_groups'));
     } // End Method
 
-    public function RolePermissionUpdate(Request $request){
-        $role_id = $request->id;
+    public function AdminRoleUpdate(Request $request, $id){
 
-        $role = Role::findOrFail($role_id);
-        $permissions = $request->permission;
+        $role = Role::find($id);
+        $permissions = [];
+        $post_permissions = $request->permission;
 
-        dd($permissions);
+        if(!empty($post_permissions)){
 
-        if(!empty($permissions)){
+            foreach ($post_permissions as $key => $perm) {
+                $permissions[intval($perm)] = intval($perm);
+            }
+
             $role->syncPermissions($permissions);
         }
         
-
         $notification = array(
             'message' => 'Role Permission Updated Successfully!',
             'alert-type' => 'success'
@@ -208,7 +211,21 @@ class RoleController extends Controller
         return redirect()->route('all.role.permission')->with($notification);
     } // End Method
 
+    public function AdminDeleteRole($id){
 
+        $role = Role::findOrFail($id);
+        if(!is_null($role)){
+            $role->delete();
+        }
+
+
+        $notification = array(
+            'message' => 'Role Permission Deleted Successfully!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
 
 
 }

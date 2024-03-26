@@ -260,6 +260,19 @@ class BookingController extends Controller
 
     } // End Method
 
+    public function DeleteBooking($id){
+        $booking = Booking::find($id);
+        if(!is_null($booking)){
+            $booking->delete();
+        }
+
+        $notification = array(
+            'message' => 'Booking Deleted Successfully',
+            'alert-type' => 'success'
+        ); 
+        return redirect()->back()->with($notification); 
+    } // End Method
+
     public function AssignRoom($booking_id){
 
         $booking = Booking::find($booking_id);

@@ -24,12 +24,12 @@
                     <div class="card">
                         <div class="card-body p-4">
                             {{-- <h5 class="mb-4">Add Roles </h5> --}}
-                            <form class="row g-3" method="POST" action="{{route('role.permission.update')}}">
+                            <form class="row g-3" method="POST" action="{{route('admin.role.update',$role->id)}}">
                                 @csrf
 
                                 <div class="col-md-6">
                                     <label for="input2" class="form-label">Role Name </label>
-                                    <input type="hidden" name="id" value="{{ $role->id }}">
+                                    {{-- <input type="hidden" name="id" value="{{ $role->id }}"> --}}
                                     <h2>{{ $role->name }}</h2>
                                 </div>
 

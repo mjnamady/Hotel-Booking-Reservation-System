@@ -42,8 +42,12 @@
                             <td>{{ $testimonial->name }}</td>
                             <td>{{ $testimonial->city }}</td>    
                             <td>
+                                @if (Auth::user()->can('testimonial.edit'))
                                 <a href="{{ route('edit.testimonial', $testimonial->id) }}" type="button" class="btn btn-outline-warning radius-30">Edit</a>
+                                @endif
+                                @if (Auth::user()->can('testimonial.delete'))
                                 <a href="{{ route('delete.testimonial', $testimonial->id) }}" id="delete" type="button" class="btn btn-outline-danger radius-30">Delete</a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
